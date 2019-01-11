@@ -8,7 +8,7 @@ class AddItem extends Component {
 
   onSubmit = (e)=> {
     e.preventDefault()
-    console.log(e.target)
+    this.props.addItemToState(this.state.quantity, this.state.productId)
   }
   render() {
     return (
