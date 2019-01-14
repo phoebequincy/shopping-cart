@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const CartFooter = (props) => {
-  return (
-    <nav className="navbar navbar-dark bg-dark">
-    <a className="navbar-brand" href="#">&copy; {props.copyright}</a>
-    </nav>
-  )
+class Footer extends Component {
+  render() {
+    return (
+      <div className="Footer">
+        <nav className="navbar navbar-dark bg-dark">
+            <a className="navbar-brand" href="/">&copy; {this.props.copyright}</a>
+        </nav>
+      </div>
+    );
+  }
 }
 
-export default CartFooter
+export default Footer;

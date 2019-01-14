@@ -1,29 +1,29 @@
-import React from 'react';
-import CartItem from './CartItem';
+import React from 'react'
+import CartItem from  "./CartItem"
+import CartTotal from  "./CartTotal"
 
 
 const CartItems = (props) => {
-  console.log("props", props.cartItemsList)
-  return (
 
-    <div className="list-group-item">
-  <h1>Cart Items</h1>
-  <div className="list-group">
-    <div className="list-group-item">
-      <div className="row">
-        <div className="col-md-8">Product</div>
-        <div className="col-md-2">Price</div>
-        <div className="col-md-2">Quantity</div>
+  return (
+    <div className="CartItems">
+    <div className="container mt-4">
+      <h1>Cart Items</h1>
+      <div className="list-group">
+        <div className="list-group-item">
+          <div className="row">
+            <div className="col-md-8">Product</div>
+            <div className="col-md-2">Price</div>
+            <div className="col-md-2">Quantity</div>
+          </div>
+        </div>
+
+        {props.cartItemsList.map(item => <div className="list-group-item"><CartItem product={item}/></div>) }
+        <Total total={props.total}/>
       </div>
     </div>
-    {props.cartItemsList.map(item =>
-      <CartItem
-      key={item.id}
-      name={item.product.name}
-      priceInCents={item.product.priceInCents}
-      quantity={item.quantity.name}/>)}
-      </div>
   </div>
-)
+  )
 }
-export default CartItems
+
+export default CartItems;
