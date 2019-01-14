@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Header from  './components/Header'
-import Footer from  './components/Footer'
+import CartHeader from  './components/CartHeader'
+import CartFooter from  './components/CartFooter'
 import CartItems from  './components/CartItems'
 import AddItem from  './components/AddItem'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -47,14 +47,14 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header title="Shopping Cart"/>
+        <CartHeader title="Shopping Cart"/>
         <CartItems cartItemsList={this.state.cartItemsList}/>
         <AddItem
           productList={this.state.products}
           handleQuantity={this.state.handleQuantity}
           handleItem={this.state.handleItem}
           handleSubmit={this.state.handleSubmit}/>
-        <Footer copyright="2019"/>
+        <CartFooter copyright="2019"/>
       </div>
     );
   }
