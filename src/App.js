@@ -3,15 +3,11 @@ import CartHeader from  './components/CartHeader'
 import CartFooter from  './components/CartFooter'
 import CartItems from  './components/CartItems'
 import AddItem from  './components/AddItem'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 class App extends Component {
 
-  state = {cartItemsList: [
-      { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
-      { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
-      { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
-    ],
+  state = {
     products: [
       { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 },
       { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 },
@@ -22,39 +18,33 @@ class App extends Component {
       { id: 46, name: 'Intelligent Leather Clock', priceInCents: 2999 },
       { id: 47, name: 'Ergonomic Bronze Lamp', priceInCents: 40000 },
       { id: 48, name: 'Awesome Leather Shoes', priceInCents: 3990 },
+    ],
+
+  cartItemsList: [
+      { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
+      { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
+      { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
     ]
+}
+addItemToState = (quantity,productId)=> {
+
+  let productToAdd = this.state.products.find(product => product.id == 48)
+  let newItem = {
+    id: this.state.cartItemsList.length + 1,
+    product: productToAdd,
+    quantity: quantity
   }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(this.state)
-  }
-
-  handleItem = (event) => {
-    let newState = {...this.state}
-    newState.itemAdd = event.target.value
-    this.setState(newState)
-  }
-
-  handleQuantity = (event) => {
-    let newState = {...this.state}
-    newState.quantity = event.target.value
-    this.setState(newState)
-  }
-
-
+  console.log(newItem);
+  this.setState({cartItemsList:[...this.state.cartItemsList, newItem] })
+}
   render() {
 
     return (
       <div className="App">
-        <CartHeader title="Shopping Cart"/>
+        <CartHeader />
         <CartItems cartItemsList={this.state.cartItemsList}/>
-        <AddItem
-          productList={this.state.products}
-          handleQuantity={this.state.handleQuantity}
-          handleItem={this.state.handleItem}
-          handleSubmit={this.state.handleSubmit}/>
-        <CartFooter copyright="2019"/>
+        <AddItem products={this.state.products} addItemToState={this.addItemToState}/>
+        <CartFooter copyright={2019}/>
       </div>
     );
   }

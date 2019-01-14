@@ -18,8 +18,8 @@ const CartItems = (props) => {
           </div>
         </div>
 
-        {props.cartItemsList.map(item => <div className="list-group-item"><CartItem product={item}/></div>) }
-        <CartTotal total={props.total}/>
+        {props.cartItemsList.map(item => <div className="list-group-item"><CartItem product={item}/></div>)}
+        <CartTotal cartItemsList={props.cartItemsList}/>
       </div>
     </div>
   </div>

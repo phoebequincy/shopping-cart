@@ -1,27 +1,33 @@
 import React, { Component } from 'react'
 
 class AddItem extends Component {
+  state = {
+    quantity: 0,
+    productId: 40
+  }
 
-    render() {
-        return (
-        <div className="AddItem container">
-            <form onSubmit={this.props.handleSubmit}>
-                <div className="form-group ">
-                    <label htmlFor="select-item">Select Item</label>
-                        <select className="form-control col-md-8" id="select-item" onChange={this.props.handleItem}>
-                            <option>Select an option...</option>
-                            {this.props.productList.map(item => <option>{item.name}</option>)}
-                        </select>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="quantity">Quantity</label>
-                        <input type="number" className="form-control col-md-2" id="quantity" onChange={this.props.handleQuantity}/>
-                </div>
-                    <button className="btn btn-primary mb-2" type="submit" value="Submit" >Submit</button>
-            </form>
+  onSubmit = (e)=> {
+    e.preventDefault()
+    this.props.addItemToState(this.state.quantity, this.state.productId)
+  }
+  render() {
+    return (
+      <form className="container" onSubmit={this.onSubmit}>
+        <div className="form-group">
+          <label htmlFor="quantity">Quantity</label>
+          <input type="number" className="form-control" id="quantity" value={this.state.quantity} onChange={(e)=> this.setState({quantity: e.target.value})}/>
+
+          <label htmlFor="product">Product</label>
+          <select id="product" className="form-control" value={this.state.productId} onChange={(e) => this.setState({productId: e.target.value})}>
+            <option>Choose...</option>
+            {this.props.products.map(product => <option key={product.id} value={product.id}>{product.name}</option>)}
+          </select>
+
+          <button type="submit" className="btn btn-primary">Submit</button>
         </div>
-        );
-    }
+      </form>
+    )
+  }
 }
 
-export default AddItem 
+export default AddItem
