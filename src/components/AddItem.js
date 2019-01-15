@@ -24,6 +24,7 @@ class AddItem extends Component {
           </select>
 
           <button type="submit" className="btn btn-primary">Submit</button>
+
         </div>
       </form>
     )

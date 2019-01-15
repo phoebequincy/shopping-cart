@@ -28,13 +28,13 @@ class App extends Component {
 }
 addItemToState = (quantity,productId)=> {
 
-  let productToAdd = this.state.products.find(product => product.id == 48)
+  let productToAdd = this.state.products.find(product => product.id == parseInt(productId))
   let newItem = {
     id: this.state.cartItemsList.length + 1,
     product: productToAdd,
     quantity: quantity
   }
-  console.log(newItem);
+
   this.setState({cartItemsList:[...this.state.cartItemsList, newItem] })
 }
   render() {
