@@ -5,9 +5,10 @@ const CartTotal = (props) => {
 
   return (
     <div className="Total mt-2">
+
         <h4>Total: $ {props.cartItemsList.reduce((total, item) => {
-          
-          return ((parseInt(total) + (item.product.priceInCents * item.quantity)/100).toFixed(2))
+          let itemTotal = ((item.product.priceInCents) * item.quantity / 100)
+          return (total + parseFloat(itemTotal))
         },0)}
         </h4>
    </div>

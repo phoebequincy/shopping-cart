@@ -18,13 +18,14 @@ const CartItems = (props) => {
           </div>
         </div>
 
-        {props.cartItemsList.map(item =>
-        <div className="list-group-item">
+        {props.cartItemsList.map((item, id) =>
+        <div className="list-group-item"
+        key={id}>
           <CartItem
           product={item}
           />
         </div>)}
-        
+
         <CartTotal
           cartItemsList={props.cartItemsList}
         />
