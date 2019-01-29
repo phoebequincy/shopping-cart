@@ -42,9 +42,19 @@ addItemToState = (quantity,productId)=> {
     return (
       <div className="App">
         <CartHeader />
-        <CartItems cartItemsList={this.state.cartItemsList}/>
-        <AddItem products={this.state.products} addItemToState={this.addItemToState}/>
-        <CartFooter copyright={2019}/>
+        
+        <CartItems
+          cartItemsList={this.state.cartItemsList}
+        />
+
+        <AddItem
+          products={this.state.products}
+          addItemToState={this.addItemToState}
+        />
+
+        <CartFooter
+          copyright={2019}
+        />
       </div>
     );
   }
