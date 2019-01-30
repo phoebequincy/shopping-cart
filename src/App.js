@@ -29,6 +29,7 @@ class App extends Component {
 addItemToState = (quantity,productId)=> {
 
   let productToAdd = this.state.products.find(product => product.id == parseInt(productId))
+
   let newItem = {
     id: this.state.cartItemsList.length + 1,
     product: productToAdd,
@@ -42,7 +43,7 @@ addItemToState = (quantity,productId)=> {
     return (
       <div className="App">
         <CartHeader />
-        
+
         <CartItems
           cartItemsList={this.state.cartItemsList}
         />
